@@ -104,9 +104,13 @@ function player_think() {
     if(game.player_points>10.5){
         document.getElementById("information").innerHTML = "玩家輸了,";
         document.getElementById("information").innerHTML += "點數："+game.player_points;
+        document.getElementById("start").style.display = "none";
+        document.getElementById("stop").style.display = "none";
     } else if (game.player_points == 10.5 || game.count == 5) {
         document.getElementById("information").innerHTML = "玩家贏了,";
         document.getElementById("information").innerHTML += "點數："+game.player_points;
+        document.getElementById("start").style.display = "none";
+        document.getElementById("stop").style.display = "none";
 
     } else{
         document.getElementById("information").innerHTML = "玩家點數："+game.player_points;
