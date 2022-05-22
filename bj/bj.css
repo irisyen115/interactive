@@ -12,6 +12,7 @@ body{
     border-radius: 5px;
     margin: 10px;
     padding: 10px;
+    box-shadow: 3px 3px 3px black;
 }
 .button{ 
     display: flex;
@@ -26,12 +27,8 @@ body{
     justify-content: center;
     align-items: center;
 }
-#player_desk{
-    display: flex;                /*background: -webkit-linear-gradient(yellow,red);
-    background: -o-linear-gradient(yellow,red);
-    background: -moz-linear-gradient(yellow,red);
-    background: linear-gradient(yellow,red); */
-    padding: 3px;
+.desk{
+    display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
@@ -63,13 +60,4 @@ body{
 
 #information{
     font-size: 50px;
-}
-#banker_desk{
-    display: flex;                /*background: -webkit-linear-gradient(yellow,red);
-    background: -o-linear-gradient(yellow,red);
-    background: -moz-linear-gradient(yellow,red);
-    background: linear-gradient(yellow,red); */
-    padding: 3px;
-    justify-content: center;
-    flex-wrap: wrap;
 }
