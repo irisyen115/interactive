@@ -1,17 +1,28 @@
-setInterval(play, 3000);  
+let index=0;              
+    
+function startPlay(emotion) {
+    stopPlay();
+    if(emotion == "sad"){
+        window.game.clock = setInterval(()=>{ play(0, 3); }, 1500);
+    } else {
+        window.game.clock = setInterval(()=>{ play(4, 7); }, 1500);
+    }
+}
 
-      let index=0;              
-      
-      function play(){
-	    let imgs = document.getElementById("thumbs").    
-                            getElementsByTagName("img"); 
-        let showImg = document.getElementById("show");
-        index++;  
-        
-        if(index == imgs.length) index=0; 
+function stopPlay(){
+    clearInterval(window.game.clock);
+}
 
-        showImg.setAttribute("src", imgs[index].getAttribute("src"));
-      }
+function play(start,end){
+    let imgs = document.getElementById("thumbs").getElementsByTagName("img"); 
+    let showImg = document.getElementById("show");
+    index++;  
+
+    if(index > end || index < start) index=start; 
+
+    showImg.setAttribute("src", imgs[index].getAttribute("src"));
+
+}
 
 function shuffleArray(inputArray){
     inputArray.sort(()=> Math.random() - 0.5);
@@ -24,6 +35,7 @@ function init(){
 
 function Reset() {
     init();
+    stopPlay();
 }
 
 function initGameValues(){
@@ -47,6 +59,7 @@ function initUI() {
     const information = document.getElementById("information");
     const start = document.getElementById("start");
     const stop = document.getElementById("stop");
+    const show = document.getElementById("show");
     if (player_desk) {
         player_desk.innerHTML = "";
     } 
@@ -61,6 +74,9 @@ function initUI() {
     }
     if (stop) {
         stop.style.display = "flex";
+    }
+    if (show) {
+        show.setAttribute("src", "img/value.jpeg");
     }
 
 }
@@ -121,12 +137,13 @@ function player_think() {
         document.getElementById("information").innerHTML += "點數："+game.player_points;
         document.getElementById("start").style.display = "none";
         document.getElementById("stop").style.display = "none";
+        startPlay("happy");
     } else if (game.player_points == 10.5 || game.count == 5) {
         document.getElementById("information").innerHTML = "玩家贏了,";
         document.getElementById("information").innerHTML += "點數："+game.player_points;
         document.getElementById("start").style.display = "none";
         document.getElementById("stop").style.display = "none";
-
+        startPlay("sad");
     } else{
         document.getElementById("information").innerHTML = "玩家點數："+game.player_points;
     }
@@ -145,16 +162,18 @@ function banker_think() {
         status = "lose";
         document.getElementById("information").innerHTML = "莊家輸了,";
         document.getElementById("information").innerHTML += "點數："+game.banker_points;
+        startPlay("sad");
     } else if (game.banker_points == 10.5 || game.banker_count == 5 || game.banker_points>game.player_points) {
         status = "win";
         document.getElementById("information").innerHTML = "莊家贏了,";
         document.getElementById("information").innerHTML += "點數："+game.banker_points;
-
+        startPlay("happy");
     } else{
         status = "draw";
         document.getElementById("information").innerHTML = "莊家點數："+game.banker_points;
     }
     return status;
+    
 
 }
 
