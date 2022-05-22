@@ -1,3 +1,18 @@
+setInterval(play, 3000);  
+
+      let index=0;              
+      
+      function play(){
+	    let imgs = document.getElementById("thumbs").    
+                            getElementsByTagName("img"); 
+        let showImg = document.getElementById("show");
+        index++;  
+        
+        if(index == imgs.length) index=0; 
+
+        showImg.setAttribute("src", imgs[index].getAttribute("src"));
+      }
+
 function shuffleArray(inputArray){
     inputArray.sort(()=> Math.random() - 0.5);
 }
@@ -160,6 +175,7 @@ function banker_turn() {
         setTimeout(banker_turn,1000);
     }
 }
+
 
 
 window.game = {}

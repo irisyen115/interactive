@@ -11,6 +11,11 @@ body{
     font-size: 20px;
     padding: 2px;
 }
+.pic{
+    display: none;
+    width: 100px;
+    height: 100px;
+}
 #container{
     font-size: larger;
 }
