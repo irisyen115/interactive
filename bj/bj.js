@@ -53,6 +53,11 @@ function initGameValues(){
     game.banker_points = 0; 
 }
 
+function result(){
+    game.player_win = 0;
+    game.banker_win = 0;
+}
+
 function initUI() {
     const player_desk = document.getElementById("player_desk");
     const banker_desk = document.getElementById("banker_desk");
@@ -137,12 +142,18 @@ function player_think() {
         document.getElementById("information").innerHTML += "點數："+game.player_points;
         document.getElementById("start").style.display = "none";
         document.getElementById("stop").style.display = "none";
+        game.banker_win += 1;
+        document.getElementById("player_result").innerHTML = "玩家勝："+game.player_win+"場";
+        document.getElementById("banker_result").innerHTML = "莊家勝："+game.banker_win+"場";        
         startPlay("happy");
     } else if (game.player_points == 10.5 || game.count == 5) {
         document.getElementById("information").innerHTML = "玩家贏了,";
         document.getElementById("information").innerHTML += "點數："+game.player_points;
         document.getElementById("start").style.display = "none";
         document.getElementById("stop").style.display = "none";
+        game.player_win += 1;
+        document.getElementById("player_result").innerHTML = "玩家勝："+game.player_win+"場";
+        document.getElementById("banker_result").innerHTML = "莊家勝："+game.banker_win+"場";
         startPlay("sad");
     } else{
         document.getElementById("information").innerHTML = "玩家點數："+game.player_points;
@@ -162,11 +173,17 @@ function banker_think() {
         status = "lose";
         document.getElementById("information").innerHTML = "莊家輸了,";
         document.getElementById("information").innerHTML += "點數："+game.banker_points;
+        game.player_win += 1;        
+        document.getElementById("player_result").innerHTML = "玩家勝："+game.player_win+"場";
+        document.getElementById("banker_result").innerHTML = "莊家勝："+game.banker_win+"場";
         startPlay("sad");
     } else if (game.banker_points == 10.5 || game.banker_count == 5 || game.banker_points>game.player_points) {
         status = "win";
         document.getElementById("information").innerHTML = "莊家贏了,";
         document.getElementById("information").innerHTML += "點數："+game.banker_points;
+        game.banker_win += 1;
+        document.getElementById("player_result").innerHTML = "玩家勝："+game.player_win+"場";
+        document.getElementById("banker_result").innerHTML = "莊家勝："+game.banker_win+"場";
         startPlay("happy");
     } else{
         status = "draw";
@@ -199,3 +216,4 @@ function banker_turn() {
 
 window.game = {}
 init();
+result();
