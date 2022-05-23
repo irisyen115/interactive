@@ -110,7 +110,7 @@ function Onclick(){
     
     upborder.setAttribute("class","upborder");
     downborder.setAttribute("class","downborder");
-    card.setAttribute("class","card");
+    card.setAttribute("class","my_card");
 
     upflower.setAttribute("class","flower" );
     upflower.setAttribute("src","img/heart.jpeg")
