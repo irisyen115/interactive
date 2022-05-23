@@ -21,7 +21,6 @@ function play(start,end){
     if(index > end || index < start) index=start; 
 
     showImg.setAttribute("src", imgs[index].getAttribute("src"));
-
 }
 
 function shuffleArray(inputArray){
@@ -81,9 +80,8 @@ function initUI() {
         stop.style.display = "flex";
     }
     if (show) {
-        show.setAttribute("src", "img/value.jpeg");
+       show.setAttribute("src", "img/value.jpeg");
     }
-
 }
 
 function Onclick(){
@@ -92,14 +90,12 @@ function Onclick(){
     const pointmapping = [1,2,3,4,5,6,7,8,9,10,0.5,0.5,0.5];
     game.count += 1;
     game.player_count += 1;
-
     
     game.player_points += pointmapping[point%13];
     player_think();
 
-    
     parent.appendChild(GetCardUI(point));
- }
+}
 
  function GetCardUI(point){
     const numbermapping = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"]; 
@@ -121,12 +117,10 @@ function Onclick(){
     downflower.setAttribute("class","flower");    
     downflower.setAttribute("src","img/heart.jpeg")
 
-    
     number.setAttribute("class","number");
     number.innerText=numbermapping[point%13];
     upflower.setAttribute("src","img/"+flowermapping[Math.floor(point/13)]);
     downflower.setAttribute("src","img/"+flowermapping[Math.floor(point/13)]);
-
 
     card.appendChild(upborder);
     card.appendChild(number);
@@ -190,11 +184,7 @@ function banker_think() {
         document.getElementById("information").innerHTML = "莊家點數："+game.banker_points;
     }
     return status;
-    
-
 }
-
-
 
 function banker_turn() {
     const parent = document.getElementById("banker_desk");
@@ -211,8 +201,6 @@ function banker_turn() {
         setTimeout(banker_turn,1000);
     }
 }
-
-
 
 window.game = {}
 init();
