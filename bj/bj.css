@@ -55,12 +55,13 @@ body{
     justify-content: center;
     flex-wrap: wrap;
 }
-.my_card{
+.my-card{
     border: 2px solid;
     border-radius: 10px ;
     width: 155px;
     margin: 10px;
     box-shadow: 0 1px 1px 0  grey;
+    line-height: 1;
 }
 .size{
     font-size: 50px;
