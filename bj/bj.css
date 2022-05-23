@@ -22,7 +22,7 @@ body{
     border: 1px solid;
     border-radius: 10px;
 }
-#container{
+#play_area{
     font-size: larger;
 }
 .button_area{
@@ -55,6 +55,7 @@ body{
     justify-content: center;
     flex-wrap: wrap;
 }
+
 .my-card{
     border: 2px solid;
     border-radius: 10px ;
@@ -87,4 +88,15 @@ body{
 
 #information{
     font-size: 50px;
+}
+
+
+
+@media screen and (max-width: 990px) {
+    .desk {
+        flex-direction: column;
+    }
+    #play_area {
+        display: flex;
+    }
 }
