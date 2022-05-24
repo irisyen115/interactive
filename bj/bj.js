@@ -63,6 +63,7 @@ function initUI() {
     const information = document.getElementById("information");
     const start = document.getElementById("start");
     const stop = document.getElementById("stop");
+    const reset = document.getElementById("reset");
     const show = document.getElementById("show");
     if (player_desk) {
         player_desk.innerHTML = "";
@@ -77,7 +78,10 @@ function initUI() {
         start.style.display = "flex";
     }
     if (stop) {
-        stop.style.display = "flex";
+        stop.style.display = "none";
+    }
+    if (reset){
+        reset.style.display = "none";
     }
     if (show) {
        show.setAttribute("src", "img/value.jpeg");
@@ -88,6 +92,16 @@ function Onclick(){
     const parent = document.getElementById("player_desk");
     const point = game.deck[game.count];
     const pointmapping = [1,2,3,4,5,6,7,8,9,10,0.5,0.5,0.5];
+    const stop = document.getElementById("stop");
+    const reset = document.getElementById("reset");
+    
+    if(stop && stop.style.display == "none"){
+        stop.style.display = "flex";
+    }
+    if(reset && reset.style.display == "none"){
+        reset.style.display = "flex";
+    }
+
     game.count += 1;
     game.player_count += 1;
     
@@ -95,6 +109,8 @@ function Onclick(){
     player_think();
 
     parent.appendChild(GetCardUI(point));
+    
+    
 }
 
  function GetCardUI(point){
